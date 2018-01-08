@@ -47,7 +47,7 @@ class App extends Component {
   render () {
 	  
 	let persons = null;
-	let btnClasses =' ';
+	let btnClasses ='';
 	  
     if ( this.state.showPersons ) {
       persons = (
