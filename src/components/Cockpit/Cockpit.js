@@ -1,12 +1,13 @@
 import React from 'react';
 import classes from './Cockpit.css';
+import Auxi from '../../HOC/Auxi';
 
 const cockpit = (props) =>{
 		
 	const assignedClasses =[];
-	let btnClasses = '';
+	let btnClasses = classes.Button;
 	if(props.showPersons){
-		btnClasses = classes.Red;
+		btnClasses = [classes.Button , classes.Red].join(' ');
 	}
 	if (props.persons.length <= 2){
 		assignedClasses.push(classes.red);
@@ -18,13 +19,13 @@ const cockpit = (props) =>{
 	
 	
 	return(
-		<div className = {classes.Cockpit}>
+		<Auxi>
 			<h1>{ props.appTitle }</h1>
 			<p className = {assignedClasses.join(' ')}>This is really working!</p>
 			<button
-			  className = {btnClasses}
-			  onClick={props.clicked}>Toggle Persons</button>
-		</div>
+				className = {btnClasses}
+				onClick={props.clicked}>Toggle Persons</button>
+		</Auxi>
 	
 	);
 	
