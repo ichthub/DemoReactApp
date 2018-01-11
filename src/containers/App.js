@@ -18,6 +18,7 @@ class App extends Component {
   };
 
 }
+	/*--------------------------------lifecycle explained---------------------*/
 	componentWillMount () {
 		console.log('[App.js] inside ComponentWillMount()');
 	}
@@ -26,6 +27,19 @@ class App extends Component {
 		console.log('[App.js] inside ComponentDidMount()');
 	}
 	
+	shouldComponentUpdate ( nextProps, nextState ){
+		console.log("[UPDATE App.js] Inside shouldComponentUpdate", nextProps, nextState);
+		return nextState.persons !== this.state.persons ||  nextState.showPersons !== this.state.showPersons;
+	}
+	
+	componentWillUpdate ( nextProps, nextState ){
+		console.log("[UPDATE App.js] Inside componentWillUpdate", nextProps, nextState);
+	}
+	
+	componentDidUpdate (){
+		console.log("[UPDATE App.js] Inside componentDidUpdate");
+	}
+	/*------------------------------------------------------------------------*/
 	
 
 	nameChangedHandler = ( event, id ) => {
@@ -76,6 +90,7 @@ class App extends Component {
     return (
 	
       <div className={classes.App}>
+		<button onClick = {()=>{this.setState({showPersons: true})}}>Show Button</button>
 		<Cockpit
 			appTitle = {this.props.title}
 			showPersons={this.state.showPersons}

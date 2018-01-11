@@ -6,6 +6,7 @@ class Persons extends Component{
 		super(props);
 		console.log('[Persons.js] inside constructor()',props);
 }
+	/*----------------------------------lifecycle explained--------------------------------*/
 	componentWillMount () {
 		console.log('[Persons.js] inside ComponentWillMount()');
 	}
@@ -22,6 +23,7 @@ class Persons extends Component{
 	shouldComponentUpdate ( nextProps, nextState ){
 		console.log("[UPDATE Persons.js] Inside shouldComponentUpdate", nextProps, nextState);
 		return nextProps.persons !== this.props.persons ;
+		
 	}
 	
 	componentWillUpdate ( nextProps, nextState ){
@@ -31,7 +33,7 @@ class Persons extends Component{
 	componentDidUpdate (){
 		console.log("[UPDATE Persons.js] Inside componentDidUpdate");
 	}
-	
+	/*----------------------------------------------------------------------------------------*/
 	
 	render(){
 		console.log('[Persons.js] inside render ()');
