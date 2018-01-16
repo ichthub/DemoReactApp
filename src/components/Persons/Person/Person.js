@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classes from './Person.css';
 import Auxi from '../../../HOC/Auxi';
 import withClass from '../../../HOC/withClass_2';
@@ -15,6 +16,10 @@ class Person extends Component{
 	
 	componentDidMount () {
 		console.log('[Person.js] inside ComponentDidMount()');
+		if (this.props.position === 0){
+			this.inputElement.focus();
+		}
+		
 	}
 	
 	
@@ -26,7 +31,11 @@ class Person extends Component{
         <Auxi>
             <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
             <p>{this.props.children}</p>
-            <input type="text" onChange={this.props.changed} value={this.props.name} />
+            <input 
+				ref = {(inp) => { this.inputElement = inp }}
+				type="text"
+				onChange={this.props.changed}
+				value={this.props.name} />
         </Auxi>
     )
 	}
@@ -45,5 +54,13 @@ const person = ( props ) => {
     )
 };
 */
+Person.propTypes = {
+	click: PropTypes.func, 
+	changed: PropTypes.func, 
+	name: PropTypes.string, 
+	age: PropTypes.number
+	
+};
+
 
 export default withClass(Person, classes.Person);
